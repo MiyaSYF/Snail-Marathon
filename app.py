@@ -14,7 +14,6 @@ st.markdown("""
     .stApp {
         background-color: #2b2b2b !important;
         font-family: 'JetBrains Mono', monospace;
-        color: #000000 !important; /* 全局強制黑字 */
     }
 
     /* 2. 聊天氣泡修復 */
