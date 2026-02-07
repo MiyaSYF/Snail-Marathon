@@ -24,11 +24,6 @@ st.markdown("""
         margin-bottom: 25px;
         color: #000 !important;
     }
-    
-    /* 讓 AI 的氣泡換一個高對比度的顏色（例如黃色） */
-    .stChatMessage[data-testid="stChatMessage"]:nth-child(even) {
-        background-color: #fff200 !important; /* 經典包豪斯黃，絕對看得清！ */
-    }
 
     /* 修正消息內的文字顏色 */
     .stChatMessage p, .stChatMessage span, .stChatMessage div {
