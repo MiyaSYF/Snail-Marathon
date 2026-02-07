@@ -8,40 +8,52 @@ st.set_page_config(page_title="Snail Protocol (Online)", page_icon="🐌", layou
 # --- CSS 注入：包豪斯風格皮膚 ---
 st.markdown("""
 <style>
-    /* 1. 全局強制純黑字體與背景 */
     @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap');
     
+    /* 1. 全局背景：換成更有質感的深灰藍或工業灰 */
     .stApp {
-        background-color: #f0f0f0 !important; /* 稍亮一點的背景 */
+        background-color: #2b2b2b !important; /* 深色背景，保護眼睛哈！ */
         font-family: 'JetBrains Mono', monospace;
-        color: #000000 !important; /* 全局強制黑字 */
+        color: #ffffff !important;
     }
 
-    /* 2. 聊天氣泡修復 */
+    /* 2. 聊天氣泡：徹底硬化 */
     .stChatMessage {
-        border: 4px solid #000 !important; /* 加粗邊框 */
-        background-color: #ffffff !important; /* 默認純白背景 */
-        box-shadow: 8px 8px 0 #000 !important; /* 加強硬陰影 */
+        border: 4px solid #fff !important; /* 白色粗邊框 */
+        background-color: #1e1e1e !important; /* 深色氣泡 */
+        border-radius: 0px !important;
+        box-shadow: 10px 10px 0 #ff4757 !important; /* 鮮紅色的硬陰影！超酷！ */
         margin-bottom: 25px;
-        color: #000 !important;
     }
     
-    /* 讓 AI 的氣泡換一個高對比度的顏色（例如黃色） */
+    /* AI 氣泡：用亮藍色區分 */
     .stChatMessage[data-testid="stChatMessage"]:nth-child(even) {
-        background-color: #fff200 !important; /* 經典包豪斯黃，絕對看得清！ */
+        background-color: #001f3f !important; /* 深藍色 */
+        border-color: #0074D9 !important; /* 亮藍邊框 */
+        box-shadow: 10px 10px 0 #2ed573 !important; /* 熒光綠硬陰影 */
     }
 
-    /* 修正消息內的文字顏色 */
+    /* 確保文字在深色背景下清晰 */
     .stChatMessage p, .stChatMessage span, .stChatMessage div {
-        color: #000000 !important;
+        color: #ffffff !important;
+        font-weight: 500;
     }
 
-    /* 3. 輸入框增強 */
+    /* 3. 輸入框：黑底白字紅邊 */
     .stChatInputContainer textarea {
-        border: 4px solid #000 !important;
-        background-color: #ffffff !important;
-        color: #000000 !important;
-        box-shadow: 6px 6px 0 #000 !important;
+        border: 4px solid #ff4757 !important;
+        background-color: #000000 !important;
+        color: #ffffff !important;
+        border-radius: 0px !important;
+        box-shadow: 6px 6px 0 #fff !important;
+    }
+
+    /* 4. 按鈕：包豪斯經典黃 */
+    .stButton button {
+        background-color: #f1c40f !important;
+        color: #000 !important;
+        border: 3px solid #fff !important;
+        box-shadow: 5px 5px 0 #e67e22 !important;
     }
 </style>
 """, unsafe_allow_html=True)
