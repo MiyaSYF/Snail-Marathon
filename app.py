@@ -5,6 +5,80 @@ from st_supabase_connection import SupabaseConnection
 # --- 1. 頁面配置 ---
 st.set_page_config(page_title="Snail Protocol (Online)", page_icon="🐌", layout="centered")
 
+# --- CSS 注入：包豪斯風格皮膚 ---
+st.markdown("""
+<style>
+    /* 1. 全局字體與背景 */
+    @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap');
+    
+    .stApp {
+        background-color: #f4f4f5; /* 你的背景灰 */
+        font-family: 'JetBrains Mono', monospace;
+    }
+
+    /* 2. 聊天氣泡 (Chat Message) */
+    .stChatMessage {
+        border: 3px solid #000;
+        background-color: #fff;
+        border-radius: 0px; /* 去掉圓角，要硬朗！ */
+        box-shadow: 6px 6px 0 #000; /* 硬陰影 */
+        margin-bottom: 20px;
+        transition: transform 0.1s;
+    }
+    
+    /* 讓 AI 的氣泡有點區別 (可選) */
+    .stChatMessage[data-testid="stChatMessage"]:nth-child(even) {
+        background-color: #edf2f7;
+    }
+
+    /* 3. 輸入框 (Text Input) */
+    .stChatInputContainer {
+        padding-bottom: 20px;
+    }
+    
+    .stChatInputContainer textarea {
+        border: 3px solid #000 !important;
+        border-radius: 0px !important;
+        background-color: #fff !important;
+        color: #000 !important;
+        box-shadow: 4px 4px 0 #000 !important;
+        font-family: 'JetBrains Mono', monospace !important;
+    }
+    
+    /* 聚焦時的效果 */
+    .stChatInputContainer textarea:focus {
+        border-color: #ff4757 !important; /* 聚焦變紅 */
+        box-shadow: 6px 6px 0 #ff4757 !important;
+    }
+
+    /* 4. 按鈕 (Buttons) */
+    .stButton button {
+        border: 3px solid #000 !important;
+        border-radius: 0px !important;
+        background-color: #2ed573 !important; /* 熒光綠 */
+        color: #000 !important;
+        font-weight: 800 !important;
+        box-shadow: 4px 4px 0 #000 !important;
+        transition: all 0.1s;
+    }
+    
+    .stButton button:hover {
+        transform: translate(-2px, -2px);
+        box-shadow: 6px 6px 0 #000 !important;
+    }
+    
+    .stButton button:active {
+        transform: translate(2px, 2px);
+        box-shadow: 2px 2px 0 #000 !important;
+    }
+
+    /* 5. 隱藏右上角的菜單和底部的 "Made with Streamlit" (讓界面更乾淨) */
+    #MainMenu {visibility: hidden;}
+    footer {visibility: hidden;}
+    
+</style>
+""", unsafe_allow_html=True)
+
 # --- 2. 連接配置 ---
 # 初始化 Supabase 連接
 # 注意：這裡會自動去讀取 .streamlit/secrets.toml 裡的配置
