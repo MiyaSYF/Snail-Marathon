@@ -19,7 +19,7 @@ st.markdown("""
     /* 2. 聊天氣泡修復 */
     .stChatMessage {
         border: 4px solid #000 !important; /* 加粗邊框 */
-        background-color: #ffffff !important; /* 默認純白背景 */
+        background-color: #ffffff; /* 默認純白背景 */
         box-shadow: 8px 8px 0 #000 !important; /* 加強硬陰影 */
         margin-bottom: 25px;
         color: #000 !important;
