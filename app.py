@@ -96,9 +96,18 @@ for msg in story_data:
 
 if user_input := st.chat_input("貢獻你的劇情 (將被永久記錄)..."):
     
-    # 1. 用戶回合：寫入數據庫
-    add_entry("user", user_input)
-    st.rerun()
+    # --- 新增的保安檢查站 ---
+    with st.spinner("🕵️‍♂️ 審核員正在檢查你的內容..."):
+        is_safe = check_safety(user_input)
+    
+    if is_safe:
+        # A. 通過檢查 -> 寫入數據庫
+        add_entry("user", user_input)
+        st.rerun()
+    else:
+        # B. 沒通過 -> 報警
+        st.error("🚫 你的內容被 AI 審核員攔截了！請不要發布不當言論或亂碼。")
+        # 這裡不執行 rerun，用戶原本輸入的字還在，方便他修改
 
 # 檢查是否輪到 AI 回復 (最後一條是 User 發的)
 if story_data and story_data[-1]['role'] == "user":
@@ -110,7 +119,7 @@ if story_data and story_data[-1]['role'] == "user":
             history_text = "\n".join([f"{m['role']}: {m['content']}" for m in recent_history])
             
             prompt = f"""
-            你是一個對螺螄粉有執念的實體化AI。
+            你是一個因爲想吃螺螄粉的强烈願望而突然實體化AI。
             這是目前眾人接龍的故事：
             {history_text}
             
